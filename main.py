@@ -12,7 +12,7 @@ id = ""
 title = ""
 
 def getCurrent():
-    url = "http://www.jxqingtuan.cn/pub/vol/volClass/current"
+    url = "http://www.jxqingtuan.cn/pub/pub/vol/volClass/current"
     res = session.get(url).text
     jsfy = json.loads(res)
     global id
@@ -22,7 +22,7 @@ def getCurrent():
 
 if __name__ == '__main__':
     getCurrent()
-    url = "http://www.jxqingtuan.cn/pub/vol/volClass/join?accessToken="
+    url = "http://www.jxqingtuan.cn/pub/pub/vol/volClass/join?accessToken="
     
     payload = {"course":id,"subOrg":None,"nid":"_____CHANGE_____","cardNo":""}
     name = ["_____CHANGE_____", "_____CHANGE_____", "_____CHANGE_____"]
