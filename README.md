@@ -23,7 +23,18 @@
 ![](https://s3.bmp.ovh/imgs/2023/07/16/4b88762d3798587c.png)
 
 ![](https://s3.bmp.ovh/imgs/2023/07/16/de9363ba40593a21.png)
+```
+import json
 
+if __name__ == '__main__':
+
+    DATA_HERE = """
+
+"""
+
+    for item in json.loads(DATA_HERE)['list']:
+        print(f'"{item["userid"]}",')
+```
 ## 使用方法
 * 获取`openId`
 * 打开`newVersionDxx.py`, 找到第`8`行的`stuInfo`, 将`openid`填入其中, 例如
