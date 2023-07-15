@@ -18,6 +18,11 @@
 `accessToken`后的字符串即为需要的`openid`
 
 ## 如果你是团支书则可以在大学习管理后台界面抓包获得全班同学的`openid`
+参考步骤如下
+
+![](https://s3.bmp.ovh/imgs/2023/07/16/4b88762d3798587c.png)
+
+![](https://s3.bmp.ovh/imgs/2023/07/16/de9363ba40593a21.png)
 
 ## 使用方法
 * 获取`openId`
