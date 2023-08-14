@@ -22,7 +22,10 @@ def init():
             zz = resp['areaid4']
             userid = resp['id']
             openid = resp['openid']
-            xh = resp['telphone']
+            try:
+                xh = resp['telphone']
+            except:
+                xh = "114514"
             file.write(f"{xm}|{zz}|{userid}|{openid}|{xh}\n")
             time.sleep(1)
     print(f"{len(stuInfo)}条信息已经成功写入 ./userlist 文件中")
