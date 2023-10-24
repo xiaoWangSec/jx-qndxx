@@ -53,8 +53,7 @@ if __name__ == "__main__":
             userlist.append([info[0], info[1], info[2], info[3], info[4]])
     print(f"成功处理{len(userlist)}条记录, 开始执行学习操作")
 
-    resp = json.loads(requests.get("http://www.jxqingtuan.cn/pub/pub/vol/volClass/current").text)["result"]  # 用于获取最新一期的学习信息
-
+    resp = json.loads(requests.get("http://www.jxqingtuan.cn/pub/pub/vol/index/index?page=1&pageSize=10").text)["vo"]  # 用于获取最新一期的学习信息
     for userData in userlist:
         session = requests.session()
         session.headers = {
@@ -71,7 +70,7 @@ if __name__ == "__main__":
         }
 
         url = "http://www.jxqingtuan.cn/pub/pub/vol/member/addScoreInfo" # 获得学习积分的url
-        mid = f"check=1&type=3&title=%E9%9D%92%E5%B9%B4%E5%A4%A7%E5%AD%A6%E4%B9%A0&url={quote(resp['uri'])}&openid={userData[3]}&userId={userData[2]}" # 传入学习链接, openId, userId
+        mid = f"check=1&type=3&title=%E9%9D%92%E5%B9%B4%E5%A4%A7%E5%AD%A6%E4%B9%A0&url={quote(resp['studyUrl'])}&openid={userData[3]}&userId={userData[2]}" # 传入学习链接, openId, userId
         session.post(url, data=mid)  # 模拟获得积分
         time.sleep(1)
 
@@ -80,8 +79,8 @@ if __name__ == "__main__":
         session.headers["content-type"] = "application/json;charset=UTF-8;"
         payload = {
             "accessToken": userData[3],  # openid
-            "course": resp["id"],  # 大学习期数
-            "subOrg": userData[4],  # 学号
+            "course": resp["classId"],  # 大学习期数
+            "subOrg": userData[4],  # 手机号
             "nid": userData[1],  # 组织代码
             "cardNo": userData[0],  # 姓名
         }
