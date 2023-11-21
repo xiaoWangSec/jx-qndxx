@@ -73,7 +73,7 @@ if __name__ == "__main__":
         url = "http://www.jxqingtuan.cn/pub/pub/vol/member/addScoreInfo" # 获得学习积分的url
         mid = f"check=1&type=3&title=%E9%9D%92%E5%B9%B4%E5%A4%A7%E5%AD%A6%E4%B9%A0&url={quote(resp['studyUrl'])}&openid={userData[3]}&userId={userData[2]}" # 传入学习链接, openId, userId
         session.post(url, data=mid)  # 模拟获得积分
-        time.sleep(1)
+        time.sleep(5)
 
         url = "https://www.jxqingtuan.cn/api-client/classRecord/learningRecords" # 记录学习记录的url
         session.headers["Referer"] = "https://servicewechat.com/wx88ccb2655c6720e2/18/page-frame.html"
@@ -86,7 +86,7 @@ if __name__ == "__main__":
             "cardNo": userData[0],  # 姓名
         }
         print(session.post(url, data=json.dumps(payload)).text)  # 模拟学习
-        time.sleep(1)
+        time.sleep(5)
 
     print(f"成功完成{len(userlist)}次学习, 请等待后台数据刷新")
 
