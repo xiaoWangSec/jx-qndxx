@@ -67,6 +67,7 @@ if __name__ == "__main__":
             "Referer": "http://www.jxqingtuan.cn/html/",
             "Accept-Encoding": "gzip, deflate",
             "Accept-Language": "zh-CN,zh",
+            "Authorization": userData[3],
         }
 
         url = "http://www.jxqingtuan.cn/pub/pub/vol/member/addScoreInfo" # 获得学习积分的url
@@ -74,8 +75,8 @@ if __name__ == "__main__":
         session.post(url, data=mid)  # 模拟获得积分
         time.sleep(1)
 
-        url = "http://www.jxqingtuan.cn/pub/pub/vol/volClass/join?accessToken="+ userData[3] # 记录学习记录的url
-        session.headers["Referer"] = "http://www.jxqingtuan.cn/html/?accessToken=" + userData[3]
+        url = "https://www.jxqingtuan.cn/api-client/classRecord/learningRecords" # 记录学习记录的url
+        session.headers["Referer"] = "https://servicewechat.com/wx88ccb2655c6720e2/18/page-frame.html"
         session.headers["content-type"] = "application/json;charset=UTF-8;"
         payload = {
             "accessToken": userData[3],  # openid
