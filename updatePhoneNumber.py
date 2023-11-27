@@ -8,7 +8,7 @@ import newVersionDxx
 if __name__ == '__main__':
     stuInfo = newVersionDxx.stuInfo
 
-    url = "http://www.jxqingtuan.cn/pub/pub/vol/member/updateUserInfo"
+    url = "https://www.jxqingtuan.cn/pub/pub/vol/member/updateUserInfo"
 
     for item in stuInfo:
         session = requests.session()
@@ -19,13 +19,13 @@ if __name__ == '__main__':
             "content-type": "application/x-www-form-urlencoded",
             "Accept": "*/*",
             "openid": item,
-            "Origin": "http://www.jxqingtuan.cn",
-            "Referer": "http://www.jxqingtuan.cn/html/",
+            "Authorization": item,
+            "Referer": "https://servicewechat.com/wx88ccb2655c6720e2/18/page-frame.html",
             "Accept-Encoding": "gzip, deflate",
             "Accept-Language": "zh-CN,zh",
         }
 
-        infoGetUrl = "http://www.jxqingtuan.cn/pub/pub/vol/member/info?accessToken=" + item
+        infoGetUrl = "https://www.jxqingtuan.cn/pub/pub/vol/member/info?accessToken=" + item
         infoData = session.get(infoGetUrl).json()['vo']
 
         updateDate = f"type=0&userId={infoData['id']}&name={quote(infoData['username'])}&sex=&birthday=&levelId_1={infoData['areaid1']}&levelId_2={infoData['areaid2']}&levelId={infoData['areaid3']}&subLevelId={infoData['areaid4']}&xuehao=&address=&phone=138{random.randrange(10000000, 99999999)}"
