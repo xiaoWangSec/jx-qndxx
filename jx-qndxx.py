@@ -103,9 +103,10 @@ if __name__ == "__main__":
             "cardNo": userlist[userData]['cardNo'],  # 姓名
         }
         result = session.post(url, data=json.dumps(payload))
-        if result.json()['code'] == 200:
-            print(userlist[userData]['cardNo'], "学习成功")  # 模拟学习
-        else:
+        try:
+            if result.json()['code'] == 200:
+                print(userlist[userData]['cardNo'], "学习成功")  # 模拟学习
+        except:
             print(userlist[userData]['cardNo'], "学习失败")
         time.sleep(5)
 
