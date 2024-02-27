@@ -6,9 +6,7 @@ from appletYouthStudy import sessionBuilder
 stuInfo = [""]
 
 
-if __name__ == '__main__':
-    print("添加新用户工具")
-
+def addUser(stuInfo):
     try:
         with open("users.json", 'r', encoding='utf-8') as reader:
             try:
@@ -23,7 +21,7 @@ if __name__ == '__main__':
 
     if len(userlist) != len(stuInfo):  # 新初始化或者新增了用户
         for item in stuInfo:
-            if item not in userlist:
+            if item != "" and item not in userlist:
                 print(f"{item} - 不存在的用户, 尝试读取数据并写入")
                 url = "https://www.jxqingtuan.cn/api-client/user/getUserDail?accessToken="
                 session = sessionBuilder(item)
@@ -43,3 +41,9 @@ if __name__ == '__main__':
 
         with open("users.json", 'w', encoding='utf-8') as writer:
             json.dump(userlist, writer, indent=4)  # 处理完的json写入
+
+
+if __name__ == '__main__':
+    print("添加新用户工具")
+
+    addUser(stuInfo)
