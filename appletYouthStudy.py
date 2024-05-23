@@ -82,6 +82,11 @@ def addOrUpdateCourse(r: requests.Session, userid: str, orgid: str, duration: in
                "areaId2": orgid[:9], "areaId3": orgid[:13], "areaId4": orgid, "status": 1, "retakes": 0}
     req = r.post(url, data=json.dumps(payload))
     if req.status_code == 200:
+        if "无法学习" in req.json()['msg']:
+            url = "https://www.jxqingtuan.cn/api-client/userScore/addOrUpdateCourse"
+            payload = {"studyTime": duration + 100, "classId": yid, "userId": userid, "areaId1": orgid[:5],
+                       "areaId2": orgid[:9], "areaId3": orgid[:13], "areaId4": orgid, "status": 1, "retakes": 1} # 这里改成1似乎可以补学
+            r.post(url, data=json.dumps(payload))
         return True
     else:
         return False
